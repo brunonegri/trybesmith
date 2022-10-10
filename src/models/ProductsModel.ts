@@ -14,6 +14,13 @@ class ProductModel {
     INSERT INTO Trybesmith.Products (name,amount) VALUES (?,?)`, [name, amount]);
     return { id: insertId, ...req };
   }
+
+  async getAll(): Promise<Product[]> {
+    const [products] = await this.connection.execute(
+      'SELECT * FROM Trybesmith.Products',
+    );
+    return products as Product[];
+  }
 }
 
 export default ProductModel;
