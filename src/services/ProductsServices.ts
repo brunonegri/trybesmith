@@ -7,15 +7,15 @@ class ProductServices {
 
   constructor() { this.model = new ProductModel(connection); }
 
-  public async create(req: Product) {
+  public create = async (req: Product) => {
     const newProduct = await this.model.create(req);
     return newProduct;
-  }
+  };
 
-  public async getAll(): Promise<Product[]> {
+  public getAll = async (): Promise<Product[]> => {
     const products = await this.model.getAll();
     return products;
-  }
+  };
 }
 
 export default ProductServices;
